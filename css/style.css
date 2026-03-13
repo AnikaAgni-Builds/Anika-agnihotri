@@ -1,0 +1,113 @@
+/* MEDIUM THEME - CHARCOAL & AMETHYST */
+:root {
+    --bg-medium: #1A1B1E;
+    --accent-purple: #A78BFA;
+    --card-bg: rgba(45, 46, 52, 0.4);
+    --text-main: #E2E8F0;
+    --text-muted: #94A3B8;
+    --grid-color: rgba(167, 139, 250, 0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-medium);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.background-grid {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at 50% 40%, black, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at 50% 40%, black, transparent 85%);
+}
+
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 140px 40px 60px 40px; 
+    display: flex;
+    flex-direction: column; /* This fixes the footer placement */
+    min-height: 100vh;
+}
+
+/* HEADER */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 140px;
+    gap: 60px;
+}
+
+.header-left { flex: 2; }
+.header-right { flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
+
+.name { font-size: 3.8rem; font-weight: 600; letter-spacing: -2px; margin-bottom: 20px; color: #FFFFFF; }
+.purple-highlight { color: var(--accent-purple); font-weight: 600; }
+.bio-intro { font-size: 1.2rem; color: var(--text-muted); max-width: 550px; }
+
+/* NAV & SOCIALS */
+.inline-nav { display: flex; gap: 12px; margin-bottom: 30px; }
+.btn-nav {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+.btn-nav:hover { color: var(--accent-purple); border-color: var(--accent-purple); }
+.social-links { display: flex; gap: 25px; font-size: 1.3rem; }
+.social-links a { color: var(--text-muted); transition: 0.3s; opacity: 0.5; }
+.social-links a:hover { color: var(--accent-purple); opacity: 1; transform: translateY(-2px); }
+
+/* PROJECTS */
+.project-section { flex-grow: 1; margin-bottom: 120px; }
+.section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--text-muted); margin-bottom: 45px; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+
+.glass-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.card-spotlight {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(167, 139, 250, 0.1), transparent 45%);
+    pointer-events: none; opacity: 0; transition: opacity 0.5s;
+}
+.glass-card:hover .card-spotlight { opacity: 1; }
+.card-inner { padding: 45px; position: relative; z-index: 2; }
+.card-icon { font-size: 1.8rem; color: var(--accent-purple); margin-bottom: 25px; }
+.tech-tag { font-size: 0.65rem; color: var(--accent-purple); border: 1px solid rgba(167, 139, 250, 0.2); padding: 4px 12px; border-radius: 4px; }
+
+/* FOOTER AT THE BOTTOM */
+.main-footer {
+    margin-top: auto; /* Pushes the footer to the bottom of the flex container */
+    padding-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    text-align: center;
+}
+.footer-graphic { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; opacity: 0.4; }
+.shape { width: 12px; height: 12px; border: 1px solid var(--accent-purple); transition: 0.5s ease; }
+.shape.circle { border-radius: 50%; }
+.shape.square { transform: rotate(45deg); }
+.last-updated { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+.copyright { font-size: 0.7rem; color: rgba(255, 255, 255, 0.2); }
